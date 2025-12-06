@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Modal, StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native";
+import { Responsive } from "@/src/constants/responsive";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type Props = {
   isVisible: boolean;
@@ -185,28 +186,28 @@ const s = StyleSheet.create({
   container: {
     width: "85%",
     backgroundColor: "#fff",
-    borderRadius: 16,
-    padding: 20,
+    borderRadius: Responsive.borderRadius.lg,
+    padding: Responsive.spacing.lg,
     elevation: 5,
   },
   title: {
     fontWeight: "700",
-    fontSize: 18,
+    fontSize: Responsive.fontSize.xl,
     color: "#0f1e4a",
     textAlign: "center",
-    marginBottom: 16,
+    marginBottom: Responsive.spacing.lg,
   },
   monthHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
-    paddingBottom: 12,
+    marginBottom: Responsive.spacing.lg,
+    paddingBottom: Responsive.spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: "#e5e7eb",
   },
   monthText: {
-    fontSize: 16,
+    fontSize: Responsive.fontSize.lg,
     fontWeight: "700",
     color: "#0f1e4a",
     textTransform: "capitalize",
@@ -214,10 +215,10 @@ const s = StyleSheet.create({
   dayHeadersRow: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 8,
+    marginBottom: Responsive.spacing.sm,
   },
   dayHeader: {
-    fontSize: 12,
+    fontSize: Responsive.fontSize.sm,
     fontWeight: "700",
     color: "#6b7280",
     width: "14.28%",
@@ -226,22 +227,22 @@ const s = StyleSheet.create({
   calendarGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginBottom: 16,
+    marginBottom: Responsive.spacing.lg,
   },
   dayCell: {
     width: "14.28%",
     aspectRatio: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 8,
-    borderRadius: 8,
+    marginBottom: Responsive.spacing.sm,
+    borderRadius: Responsive.borderRadius.md,
     backgroundColor: "#f9fafb",
   },
   emptyCellc: {
     backgroundColor: "transparent",
   },
   dayText: {
-    fontSize: 14,
+    fontSize: Responsive.fontSize.md,
     fontWeight: "600",
     color: "#111827",
   },
@@ -257,31 +258,31 @@ const s = StyleSheet.create({
   },
   selectedDisplay: {
     backgroundColor: "#f3f4f6",
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 16,
+    borderRadius: Responsive.borderRadius.md,
+    padding: Responsive.spacing.md,
+    marginBottom: Responsive.spacing.lg,
     borderLeftWidth: 4,
     borderLeftColor: "#0f1e4a",
   },
   selectedLabel: {
-    fontSize: 12,
+    fontSize: Responsive.fontSize.sm,
     color: "#6b7280",
-    marginBottom: 4,
+    marginBottom: Responsive.spacing.sm,
   },
   selectedValue: {
-    fontSize: 16,
+    fontSize: Responsive.fontSize.lg,
     fontWeight: "700",
     color: "#0f1e4a",
   },
   buttonGroup: {
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 10,
+    gap: Responsive.spacing.md,
   },
   button: {
     flex: 1,
-    paddingVertical: 12,
-    borderRadius: 10,
+    paddingVertical: Responsive.spacing.md,
+    borderRadius: Responsive.borderRadius.lg,
     alignItems: "center",
   },
   cancelBtn: {

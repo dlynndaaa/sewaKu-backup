@@ -1,6 +1,6 @@
+import { Responsive } from "@/src/constants/responsive";
 import { useMobil } from "@/src/hooks/useMobil";
-import { useNavigation } from "@react-navigation/native"; // Impor useNavigation
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { ActivityIndicator, ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 import { CarCard } from "../components/CarCard";
 import { CarTypeFilter } from "../components/CarTypeFilter";
@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
   },
   screenContainer: {
     flex: 1,
-    padding: 10,
+    padding: Responsive.containerPadding.horizontal,
   },
   fixedHeader: {
-    marginBottom: 12,
+    marginBottom: Responsive.spacing.md,
   },
   scrollArea: {
     flex: 1,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   messageText: {
     color: "#fff",
     textAlign: "center",
-    marginTop: 16,
-    fontSize: 16,
+    marginTop: Responsive.spacing.lg,
+    fontSize: Responsive.fontSize.lg,
   },
 });
