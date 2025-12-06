@@ -1,6 +1,7 @@
 import { Responsive } from "@/src/constants/responsive";
 import { usePesananKu } from "@/src/hooks/usePesananKu";
 import { Ionicons } from "@expo/vector-icons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
     ImageBackground,
     ScrollView,
@@ -15,6 +16,7 @@ import OrderCard from "../components/OrderCard";
 export default function PesananKuScreen() {
   const { selectedTab, setSelectedTab, search, setSearch, tabs, orders } =
     usePesananKu();
+  const insets = useSafeAreaInsets();
 
   return (
     <ImageBackground
@@ -22,7 +24,7 @@ export default function PesananKuScreen() {
       style={styles.background}
       resizeMode="stretch"
     >
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, { paddingBottom: insets.bottom }]}>
         <Text style={styles.header}>PesananKu</Text>
 
         <View style={styles.searchBox}>

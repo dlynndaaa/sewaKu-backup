@@ -2,7 +2,8 @@
 import { productRepository } from "@/src/repositories/productRepository";
 import type { Product } from "@/src/types/product";
 import { router, useFocusEffect } from "expo-router";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   FlatList,
   ImageBackground,
@@ -17,6 +18,7 @@ import ProductCard from "../../components/ProductCard";
 import ProductDetailModal from "../../components/ProductDetailModal";
 
 export default function ProdukKuScreen() {
+  const insets = useSafeAreaInsets();
   const [products, setProducts] = useState<Product[]>([]);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -91,7 +93,7 @@ export default function ProdukKuScreen() {
       <FlatList
         data={[...products].sort((a, b) => b.createdAt - a.createdAt)}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={s.flatListContent}
+        contentContainerStyle={[s.flatListContent, { paddingBottom: insets.bottom + 24 }]}
         renderItem={({ item }) => (
           <ProductCard
             item={item}
@@ -157,7 +159,7 @@ const s = StyleSheet.create({
     borderColor: RED_PILL,
   },
   addBtnText: { color: RED_PILL, fontWeight: "700", fontSize: 12 },
-  flatListContent: { padding: 16, paddingBottom: 24 },
+  flatListContent: { padding: 16 },
   empty: {
     marginTop: 40,
     backgroundColor: "rgba(255,255,255,0.3)",

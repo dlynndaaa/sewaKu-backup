@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import {
   Image,
   ImageBackground,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -22,12 +23,13 @@ export default function Dashboard() {
   ];
 
   return (
-    <ImageBackground
-      source={require("@/assets/images/HalUbg.png")}
-      style={styles.background}
-      resizeMode= "stretch" 
-    >
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+    <SafeAreaView style={styles.safeArea}>
+      <ImageBackground
+        source={require("@/assets/images/HalUbg.png")}
+        style={styles.background}
+        resizeMode= "stretch" 
+      >
+        <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <Text style={styles.subtitle}>Kategori</Text>
 
@@ -37,7 +39,7 @@ export default function Dashboard() {
             <TouchableOpacity
               key={index}
               style={styles.card}
-              onPress={() => item.route && router.push(item.route)}
+              onPress={() => item.route && router.push(item.route as any)}
             >
               <Image source={item.icon} style={styles.icon} />
               <Text style={styles.cardText}>{item.name}</Text>
@@ -48,11 +50,15 @@ export default function Dashboard() {
         {/* Footer */}
         <Text style={styles.footer}>Versi Aplikasi: 1.0.0 {"\n"}2025 SewaKu</Text>
       </ScrollView>
-    </ImageBackground>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   background: {
     flex: 1,
     width: "100%",
@@ -62,19 +68,21 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     paddingTop: 230,
+    paddingBottom: 200,
   },
   subtitle: {
     color: "rgba(164, 44, 44, 1)",
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 15,
-    marginTop: 40,
+    marginBottom: 40,
+    marginTop: 100,
     fontFamily:"sfregular"
   },
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    marginTop: -35,
   },
   card: {
     backgroundColor: "rgba(164, 44, 44, 1)",
