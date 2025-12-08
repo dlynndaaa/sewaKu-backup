@@ -1,19 +1,23 @@
 import { Colors } from "@/constants/theme";
+import { Responsive } from "@/src/constants/responsive";
 import { useColorScheme } from "@/src/hooks/use-color-scheme";
 import { productRepository } from "@/src/repositories/productRepository";
 import type { CarType, Product, Transmission } from "@/src/types/product";
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ActivityIndicator,
+    Dimensions,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 const detailTabs = [
   { name: "index", icon: require("@/assets/images/home.png"), label: "Home" },
@@ -111,8 +115,8 @@ export default function DetailMobil() {
                 : require("@/assets/images/audi.jpg")
             }
             style={{
-              width: "91%",
-              height: 200,
+              width: width * 0.91,
+              height: height * 0.22,
               marginLeft: 12,
               marginRight: 6,
               borderRadius: 16,
@@ -166,7 +170,7 @@ export default function DetailMobil() {
           {/* Nama Mobil */}
           <Text
             style={{
-              fontSize: 22,
+              fontSize: Responsive.fontSize.lg,
               fontFamily: "SFBold",
               color: "#000",
               marginBottom: 12,
@@ -187,8 +191,8 @@ export default function DetailMobil() {
                 marginVertical: 4,
               }}
             >
-              <FontAwesome5 name="users" size={18} color="#333" style={{ marginRight: 8 }} />
-              <Text style={{ fontSize: 13, color: "#333" }}>
+              <FontAwesome5 name="users" size={Responsive.fontSize.md} color="#333" style={{ marginRight: 8 }} />
+              <Text style={{ fontSize: Responsive.fontSize.sm, color: "#333" }}>
                 {displayedProduct?.seats ? `${displayedProduct.seats} Seats` : "- Seats"}
               </Text>
             </View>
@@ -202,8 +206,8 @@ export default function DetailMobil() {
                 marginVertical: 4,
               }}
             >
-              <Ionicons name="briefcase" size={18} color="#333" style={{ marginRight: 8 }} />
-              <Text style={{ fontSize: 13, color: "#333" }}>
+              <Ionicons name="briefcase" size={Responsive.fontSize.md} color="#333" style={{ marginRight: 8 }} />
+              <Text style={{ fontSize: Responsive.fontSize.sm, color: "#333" }}>
                 {displayedProduct?.bagCapacity ?? "Bagasi tidak tersedia"}
               </Text>
             </View>
@@ -217,8 +221,8 @@ export default function DetailMobil() {
                 marginVertical: 4,
               }}
             >
-              <MaterialIcons name="settings" size={18} color="#333" style={{ marginRight: 8 }} />
-              <Text style={{ fontSize: 13, color: "#333" }}>
+              <MaterialIcons name="settings" size={Responsive.fontSize.md} color="#333" style={{ marginRight: 8 }} />
+              <Text style={{ fontSize: Responsive.fontSize.sm, color: "#333" }}>
                 {displayedProduct?.transmission ?? "Transmisi belum tersedia"}
               </Text>
             </View>
@@ -232,15 +236,15 @@ export default function DetailMobil() {
                 marginVertical: 4,
               }}
             >
-              <Ionicons name="location-outline" size={18} color="#333" style={{ marginRight: 8 }} />
-              <Text style={{ fontSize: 13, color: "#333" }}>
+              <Ionicons name="location-outline" size={Responsive.fontSize.md} color="#333" style={{ marginRight: 8 }} />
+              <Text style={{ fontSize: Responsive.fontSize.sm, color: "#333" }}>
                 {displayedProduct?.lokasi ?? "-"}
               </Text>
             </View>
           </View>
 
           {/* Harga */}
-          <Text style={{ fontWeight: "bold", fontSize: 16, color: "#1A1A8D", marginBottom: 12 }}>
+          <Text style={{ fontWeight: "bold", fontSize: Responsive.fontSize.md, color: "#1A1A8D", marginBottom: 12 }}>
             {displayedProduct
               ? `Rp${displayedProduct.pricePerDay.toLocaleString("id-ID")} / hari`
               : params.price ?? "Rp0 / hari"}
@@ -248,8 +252,8 @@ export default function DetailMobil() {
 
           {/* Deskripsi */}
           <View style={{ borderTopWidth: 1, borderColor: "#ccc", paddingTop: 8 }}>
-            <Text style={{ fontWeight: "bold", color: "#000", marginBottom: 4 }}>Deskripsi</Text>
-            <Text style={{ fontSize: 13, lineHeight: 20, color: "#333" }}>
+            <Text style={{ fontWeight: "bold", color: "#000", marginBottom: 4, fontSize: Responsive.fontSize.md }}>Deskripsi</Text>
+            <Text style={{ fontSize: Responsive.fontSize.sm, lineHeight: 20, color: "#333" }}>
               {displayedProduct?.description ?? "Deskripsi tidak tersedia."}
             </Text>
           </View>
@@ -270,17 +274,15 @@ export default function DetailMobil() {
             }
             style={{
               backgroundColor: "#429046ff",
-              width: 150,
-              height: 35,
+              width: width * 0.45,
+              height: 40,
               borderRadius: 12,
               marginTop: 20,
-              marginLeft: 50,
-              paddingLeft: 28,
-              paddingRight: 12,
-              paddingTop: 10,
+              alignSelf: "center",
+              justifyContent: "center",
             }}
           >
-            <Text style={{ color: "#fff", fontSize: 12, fontFamily: "SFBold" }}>
+            <Text style={{ color: "#fff", fontSize: Responsive.fontSize.sm, fontFamily: "SFBold", textAlign: "center" }}>
               Pesan Sekarang
             </Text>
           </TouchableOpacity>

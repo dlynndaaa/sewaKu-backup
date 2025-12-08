@@ -1,13 +1,13 @@
 import { useRouter } from "expo-router";
 import {
-  Dimensions,
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Image,
+    ImageBackground,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const { height } = Dimensions.get("window");
