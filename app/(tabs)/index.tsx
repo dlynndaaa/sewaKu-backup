@@ -1,14 +1,16 @@
 import { useRouter } from "expo-router";
 import {
+  Dimensions,
   Image,
   ImageBackground,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+
+const { height } = Dimensions.get("window");
 
 export default function Dashboard() {
   const router = useRouter();
@@ -29,7 +31,7 @@ export default function Dashboard() {
         style={styles.background}
         resizeMode= "stretch" 
       >
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.scrollContent}>
         {/* Header */}
         <Text style={styles.subtitle}>Kategori</Text>
 
@@ -49,7 +51,7 @@ export default function Dashboard() {
 
         {/* Footer */}
         <Text style={styles.footer}>Versi Aplikasi: 1.0.0 {"\n"}2025 SewaKu</Text>
-      </ScrollView>
+      </View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -65,24 +67,25 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   scrollContent: {
-    flexGrow: 1,
+    flex: 1,
     padding: 20,
-    paddingTop: 230,
-    paddingBottom: 200,
+    paddingTop: height * 0.42,
+    paddingBottom: 90,
+    justifyContent: "space-between",
   },
   subtitle: {
     color: "rgba(164, 44, 44, 1)",
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 40,
-    marginTop: 100,
+    marginBottom: 20,
+    marginTop: 0,
     fontFamily:"sfregular"
   },
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    marginTop: -35,
+    marginTop: 0,
   },
   card: {
     backgroundColor: "rgba(164, 44, 44, 1)",
