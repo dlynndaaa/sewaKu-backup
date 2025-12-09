@@ -7,13 +7,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import Modal from "react-native-modal";
 
@@ -408,15 +408,16 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: Responsive.size(160),
     height: Responsive.size(35),
-    marginTop: -Responsive.spacing.xl,
+    marginTop: -Responsive.spacing.xl - 5,
     zIndex: 1,
     elevation: 2,
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonText: {
     color: "white",
-    paddingLeft: Responsive.spacing.xxxl,
-    paddingBottom: Responsive.spacing.lg,
     fontFamily: "SFMedium",
+    textAlign: "center",
   },
 
   // 🔻 Modal Styles
