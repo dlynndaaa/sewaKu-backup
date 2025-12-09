@@ -23,7 +23,7 @@ export const SearchBar = ({ value, onChangeText, onBackPress }: SearchBarProps) 
         <Ionicons name="search-outline" size={18} color="#220f0fff" style={styles.searchIcon} />
         <TextInput
           style={styles.searchInput}
-          placeholder="Mobil apa yang anda cari?"
+          placeholder="Kendaraan apa yang anda cari?"
           placeholderTextColor="rgba(97, 90, 90, 0.67)"
           value={value}
           onChangeText={onChangeText}

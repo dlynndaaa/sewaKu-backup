@@ -1,13 +1,13 @@
 import { useRouter } from "expo-router";
 import {
-    Dimensions,
-    Image,
-    ImageBackground,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  Image,
+  ImageBackground,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 const { height } = Dimensions.get("window");
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const router = useRouter();
 
   const categories = [
-    { name: "Alat Konstruksi", icon: require("@/assets/icons/beko.png") },
+    { name: "Alat Konstruksi", icon: require("@/assets/icons/beko.png"), route: "/Kategori/AlatKonstruksi" },
     { name: "Mobil", icon: require("@/assets/icons/mobil.png"), route: "/Kategori/Mobil" },
     { name: "Bus", icon: require("@/assets/icons/bus.png") },
     { name: "Motor", icon: require("@/assets/icons/motor.png") },

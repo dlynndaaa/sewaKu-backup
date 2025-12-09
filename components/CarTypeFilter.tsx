@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Modal,
   StyleSheet,
@@ -28,7 +28,7 @@ export const CarTypeFilter = ({
 
   return (
     <View>
-      <Text style={styles.sectionTitle}>Jenis Mobil</Text>
+      <Text style={styles.sectionTitle}>Jenis Kendaraan</Text>
       <TouchableOpacity style={styles.dropdownToggle} onPress={() => setOpen(true)}>
         <Text style={styles.dropdownLabel}>{label}</Text>
         <Text style={styles.dropdownCaret}>▾</Text>
