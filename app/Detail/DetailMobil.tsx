@@ -19,6 +19,22 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
+// Mapping dummy images untuk kategori Alat Konstruksi dan Bus
+const dummyImageMap: { [key: string]: any } = {
+  "excavator-cat-320": require("@/assets/images/audi.jpg"),
+  "backhoe-jcb": require("@/assets/images/audi.jpg"),
+  "wheel-loader-komatsu": require("@/assets/images/audi.jpg"),
+  "vibrating-roller": require("@/assets/images/audi.jpg"),
+  "concrete-mixer": require("@/assets/images/audi.jpg"),
+  "power-generator": require("@/assets/images/audi.jpg"),
+  "bus-mercedes-50": require("@/assets/images/audi.jpg"),
+  "bus-hino-47": require("@/assets/images/audi.jpg"),
+  "bus-isuzu-30": require("@/assets/images/audi.jpg"),
+  "bus-mitsubishi-20": require("@/assets/images/audi.jpg"),
+  "bus-toyota-45": require("@/assets/images/audi.jpg"),
+  "bus-scania-40": require("@/assets/images/audi.jpg"),
+};
+
 const detailTabs = [
   { name: "index", icon: require("@/assets/images/home.png"), label: "Home" },
   { name: "PesananKu", icon: require("@/assets/images/list.png"), label: "Pesanan" },
@@ -111,7 +127,11 @@ export default function DetailMobil() {
           <Image
             source={
               displayedProduct?.image
-                ? { uri: displayedProduct.image }
+                ? typeof displayedProduct.image === 'string'
+                  ? dummyImageMap[displayedProduct.image] 
+                    ? dummyImageMap[displayedProduct.image]
+                    : { uri: displayedProduct.image }
+                  : displayedProduct.image
                 : require("@/assets/images/audi.jpg")
             }
             style={{
