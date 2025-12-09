@@ -1,6 +1,6 @@
 import { Responsive } from "@/src/constants/responsive";
 import { useNavigation } from "@react-navigation/native";
-import { useLayoutEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { ActivityIndicator, Dimensions, ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 import { CarCard } from "../../components/CarCard";
 import { CarTypeFilter } from "../../components/CarTypeFilter";
@@ -8,109 +8,109 @@ import { SearchBar } from "../../components/SearchBar";
 
 const { height } = Dimensions.get("window");
 
-// Dummy data untuk Motor
-const dummyMotor = [
+// Dummy data untuk Logistik
+const dummyLogistik = [
   {
-    id: "MOT001",
-    code: "MOT001",
-    name: "Honda CB150R Streetfire",
-    price: "350.000",
-    pricePerDay: 350000,
+    id: "LOG001",
+    code: "LOG001",
+    name: "Pickup Box 1 Ton Mitsubishi",
+    price: "600.000",
+    pricePerDay: 600000,
     location: "Jakarta Pusat",
     lokasi: "Jakarta Pusat",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "honda-cb150r",
+    imageName: "mitsubishi-pickup-1ton",
     transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "Small",
-    description: "Motor sport 150cc dengan performa responsif dan irit bahan bakar, cocok untuk daily rider.",
+    bagCapacity: "1000 kg",
+    description: "Pickup box dengan kapasitas 1 ton, cocok untuk pengiriman barang dalam kota.",
     carType: "City Car" as const,
   },
   {
-    id: "MOT002",
-    code: "MOT002",
-    name: "Yamaha NMAX 155 ABS",
-    price: "400.000",
-    pricePerDay: 400000,
+    id: "LOG002",
+    code: "LOG002",
+    name: "Truk Engkel 5 Ton Hino",
+    price: "1.200.000",
+    pricePerDay: 1200000,
     location: "Surabaya",
     lokasi: "Surabaya",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "yamaha-nmax",
-    transmission: "Automatic" as const,
+    imageName: "hino-engkel-5ton",
+    transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "Medium",
-    description: "Skuter premium 155cc dengan ABS dan desain modern, nyaman untuk perjalanan harian.",
+    bagCapacity: "5000 kg",
+    description: "Truk engkel dengan kapasitas 5 ton, ideal untuk logistik regional dan pengiriman barang berat.",
     carType: "City Car" as const,
   },
   {
-    id: "MOT003",
-    code: "MOT003",
-    name: "Kawasaki Ninja 250 SL",
-    price: "500.000",
-    pricePerDay: 500000,
+    id: "LOG003",
+    code: "LOG003",
+    name: "Truk Box Double Cabin Isuzu 6 Ton",
+    price: "1.500.000",
+    pricePerDay: 1500000,
     location: "Bandung",
     lokasi: "Bandung",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "kawasaki-ninja",
+    imageName: "isuzu-box-6ton",
     transmission: "Manual" as const,
-    seats: 2,
-    bagCapacity: "Small",
-    description: "Motor sport 250cc bermesin 4-stroke, cocok untuk yang mencari performa dan efisiensi bahan bakar.",
+    seats: 3,
+    bagCapacity: "6000 kg",
+    description: "Truk box double cabin dengan kapasitas 6 ton, nyaman dan powerful untuk pengiriman jarak jauh.",
     carType: "City Car" as const,
   },
   {
-    id: "MOT004",
-    code: "MOT004",
-    name: "Suzuki GSX-R150",
-    price: "380.000",
-    pricePerDay: 380000,
+    id: "LOG004",
+    code: "LOG004",
+    name: "Pickup Bak Terbuka Toyota 2 Ton",
+    price: "750.000",
+    pricePerDay: 750000,
     location: "Medan",
     lokasi: "Medan",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "suzuki-gsx-r150",
+    imageName: "toyota-pickup-2ton",
     transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "Small",
-    description: "Sport 150cc dengan teknologi terkini, desain agresif dan handling yang sempurna.",
+    bagCapacity: "2000 kg",
+    description: "Pickup bak terbuka 2 ton, fleksibel untuk berbagai jenis pengiriman dan muatan.",
     carType: "City Car" as const,
   },
   {
-    id: "MOT005",
-    code: "MOT005",
-    name: "Honda PCX 160",
-    price: "420.000",
-    pricePerDay: 420000,
+    id: "LOG005",
+    code: "LOG005",
+    name: "Truk Colt Double Cabin 3.5 Ton",
+    price: "950.000",
+    pricePerDay: 950000,
     location: "Yogyakarta",
     lokasi: "Yogyakarta",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "honda-pcx",
-    transmission: "Automatic" as const,
-    seats: 2,
-    bagCapacity: "Medium",
-    description: "Skuter matik 160cc dengan fitur lengkap, bahan bakar efisien dan nyaman dikendarai.",
+    imageName: "colt-double-cabin-3.5ton",
+    transmission: "Manual" as const,
+    seats: 3,
+    bagCapacity: "3500 kg",
+    description: "Truk Colt double cabin 3.5 ton dengan ruang kabin luas dan lega untuk pengiriman efisien.",
     carType: "City Car" as const,
   },
   {
-    id: "MOT006",
-    code: "MOT006",
-    name: "Yamaha YZF-R15 V4",
-    price: "450.000",
-    pricePerDay: 450000,
+    id: "LOG006",
+    code: "LOG006",
+    name: "Truk Tangki Pertamina 5000 Liter",
+    price: "2.000.000",
+    pricePerDay: 2000000,
     location: "Lampung",
     lokasi: "Lampung",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "yamaha-yzf-r15",
+    imageName: "tangki-5000liter",
     transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "Small",
-    description: "Sport 150cc berkualitas tinggi dengan teknologi VVA, desain aerodinamis dan performa maksimal.",
+    bagCapacity: "5000 L",
+    description: "Truk tangki dengan kapasitas 5000 liter, spesial untuk pengangkutan cairan dan bahan kimia.",
     carType: "City Car" as const,
   },
 ];
 
-const carTypes = ["All", "Sport", "Skuter", "Touring", "Cruiser", "Matic"];
+const carTypes = ["All", "Pickup", "Truk", "Box", "Double Cabin", "Tangki"];
 
-export default function Motor() {
+export default function Logistik() {
   const [selectedType, setSelectedType] = useState("All");
   const [search, setSearch] = useState("");
   const [loading] = useState(false);
@@ -127,11 +127,11 @@ export default function Motor() {
   };
 
   // Filter berdasarkan search dan type
-  const filteredMotor = dummyMotor.filter((motor) => {
-    const matchesSearch = motor.name.toLowerCase().includes(search.toLowerCase()) ||
-                         motor.lokasi.toLowerCase().includes(search.toLowerCase());
+  const filteredLogistik = dummyLogistik.filter((item) => {
+    const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) ||
+                         item.lokasi.toLowerCase().includes(search.toLowerCase());
     const matchesType = selectedType === "All" || 
-                       motor.name.toLowerCase().includes(selectedType.toLowerCase());
+                       item.name.toLowerCase().includes(selectedType.toLowerCase());
     return matchesSearch && matchesType;
   });
 
@@ -161,11 +161,11 @@ export default function Motor() {
         <ScrollView style={styles.scrollArea} contentContainerStyle={styles.listContainer}>
           {loading ? (
             <ActivityIndicator size="large" color="#fff" />
-          ) : filteredMotor.length === 0 ? (
-            <Text style={styles.messageText}>Motor tidak tersedia di saat ini.</Text>
+          ) : filteredLogistik.length === 0 ? (
+            <Text style={styles.messageText}>Logistik tidak tersedia di saat ini.</Text>
           ) : (
-            filteredMotor.map((motor, index) => (
-              <CarCard key={`${motor.code ?? motor.name}-${index}`} car={motor} />
+            filteredLogistik.map((item, index) => (
+              <CarCard key={`${item.code ?? item.name}-${index}`} car={item} />
             ))
           )}
         </ScrollView>
