@@ -21,7 +21,7 @@ export default function Dashboard() {
     { name: "Bus", icon: require("@/assets/icons/bus.png"), route: "/Kategori/Bus" },
     { name: "Motor", icon: require("@/assets/icons/motor.png"), route: "/Kategori/Motor" },
     { name: "Logistik", icon: require("@/assets/icons/logistik.png"), route: "/Kategori/Logistik" },
-    { name: "Lainnya", icon: require("@/assets/icons/lainnya.png") },
+    { name: "Lainnya", icon: require("@/assets/icons/lainnya.png"), route: "/Kategori/Lainnya" },
   ];
 
   return (

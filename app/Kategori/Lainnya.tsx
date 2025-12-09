@@ -1,6 +1,6 @@
 import { Responsive } from "@/src/constants/responsive";
 import { useNavigation } from "@react-navigation/native";
-import { useLayoutEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { ActivityIndicator, Dimensions, ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 import { CarCard } from "../../components/CarCard";
 import { CarTypeFilter } from "../../components/CarTypeFilter";
@@ -8,109 +8,109 @@ import { SearchBar } from "../../components/SearchBar";
 
 const { height } = Dimensions.get("window");
 
-// Dummy data untuk Logistik
-const dummyLogistik = [
+// Dummy data untuk Lainnya
+const dummyLainnya = [
   {
-    id: "LOG001",
-    code: "LOG001",
-    name: "Pickup Box 1 Ton Mitsubishi",
-    price: "600.000",
-    pricePerDay: 600000,
+    id: "LIN001",
+    code: "LIN001",
+    name: "Ambulans Toyota Hiace",
+    price: "800.000",
+    pricePerDay: 800000,
     location: "Jakarta Pusat",
     lokasi: "Jakarta Pusat",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "mitsubishi-pickup-1ton",
-    transmission: "Manual" as const,
-    seats: 2,
-    bagCapacity: "1000 kg",
-    description: "Pickup box dengan kapasitas 1 ton, cocok untuk pengiriman barang dalam kota.",
-    carType: "City Car" as const,
+    imageName: "ambulans-toyota-hiace",
+    transmission: "Automatic" as const,
+    seats: 3,
+    bagCapacity: "Large",
+    description: "Ambulans standar dengan peralatan medical lengkap untuk kedaraan darurat medis.",
+    carType: "MPV" as const,
   },
   {
-    id: "LOG002",
-    code: "LOG002",
-    name: "Truk Engkel 5 Ton Hino",
-    price: "1.200.000",
-    pricePerDay: 1200000,
+    id: "LIN002",
+    code: "LIN002",
+    name: "Mobil Jenazah Isuzu",
+    price: "1.000.000",
+    pricePerDay: 1000000,
     location: "Surabaya",
     lokasi: "Surabaya",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "hino-engkel-5ton",
+    imageName: "mobil-jenazah-isuzu",
     transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "5000 kg",
-    description: "Truk engkel dengan kapasitas 5 ton, ideal untuk logistik regional dan pengiriman barang berat.",
+    bagCapacity: "Large",
+    description: "Mobil jenazah dengan interior khusus dan handling profesional untuk kebutuhan pemakaman.",
     carType: "City Car" as const,
   },
   {
-    id: "LOG003",
-    code: "LOG003",
-    name: "Truk Box Double Cabin Isuzu 6 Ton",
-    price: "1.500.000",
-    pricePerDay: 1500000,
+    id: "LIN003",
+    code: "LIN003",
+    name: "Mobil Salon Kecantikan Mobile",
+    price: "1.200.000",
+    pricePerDay: 1200000,
     location: "Bandung",
     lokasi: "Bandung",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "isuzu-box-6ton",
-    transmission: "Manual" as const,
-    seats: 3,
-    bagCapacity: "6000 kg",
-    description: "Truk box double cabin dengan kapasitas 6 ton, nyaman dan powerful untuk pengiriman jarak jauh.",
+    imageName: "salon-mobile-van",
+    transmission: "Automatic" as const,
+    seats: 2,
+    bagCapacity: "Medium",
+    description: "Mobil salon mobile dengan peralatan kecantikan lengkap untuk layanan ke lokasi.",
     carType: "City Car" as const,
   },
   {
-    id: "LOG004",
-    code: "LOG004",
-    name: "Pickup Bak Terbuka Toyota 2 Ton",
-    price: "750.000",
-    pricePerDay: 750000,
+    id: "LIN004",
+    code: "LIN004",
+    name: "Mobil Escape Room Premium",
+    price: "900.000",
+    pricePerDay: 900000,
     location: "Medan",
     lokasi: "Medan",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "toyota-pickup-2ton",
-    transmission: "Manual" as const,
-    seats: 2,
-    bagCapacity: "2000 kg",
-    description: "Pickup bak terbuka 2 ton, fleksibel untuk berbagai jenis pengiriman dan muatan.",
-    carType: "City Car" as const,
+    imageName: "escape-room-mobile",
+    transmission: "Automatic" as const,
+    seats: 5,
+    bagCapacity: "Large",
+    description: "Mobil escape room dengan desain interior interaktif untuk hiburan keluarga dan grup.",
+    carType: "MPV" as const,
   },
   {
-    id: "LOG005",
-    code: "LOG005",
-    name: "Truk Colt Double Cabin 3.5 Ton",
-    price: "950.000",
-    pricePerDay: 950000,
+    id: "LIN005",
+    code: "LIN005",
+    name: "Food Truck Kuliner",
+    price: "1.500.000",
+    pricePerDay: 1500000,
     location: "Yogyakarta",
     lokasi: "Yogyakarta",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "colt-double-cabin-3.5ton",
+    imageName: "food-truck-kuliner",
     transmission: "Manual" as const,
-    seats: 3,
-    bagCapacity: "3500 kg",
-    description: "Truk Colt double cabin 3.5 ton dengan ruang kabin luas dan lega untuk pengiriman efisien.",
+    seats: 2,
+    bagCapacity: "Large",
+    description: "Food truck lengkap dengan dapur mobile untuk usaha kuliner dan catering event.",
     carType: "City Car" as const,
   },
   {
-    id: "LOG006",
-    code: "LOG006",
-    name: "Truk Tangki Pertamina 5000 Liter",
-    price: "2.000.000",
-    pricePerDay: 2000000,
+    id: "LIN006",
+    code: "LIN006",
+    name: "Mobil Perpustakaan Keliling",
+    price: "1.100.000",
+    pricePerDay: 1100000,
     location: "Lampung",
     lokasi: "Lampung",
     image: require("@/assets/images/audi.jpg"),
-    imageName: "tangki-5000liter",
+    imageName: "perpustakaan-keliling",
     transmission: "Manual" as const,
     seats: 2,
-    bagCapacity: "5000 L",
-    description: "Truk tangki dengan kapasitas 5000 liter, spesial untuk pengangkutan cairan dan bahan kimia.",
+    bagCapacity: "Large",
+    description: "Mobil perpustakaan keliling dengan koleksi buku dan fasilitas baca untuk edukasi masyarakat.",
     carType: "City Car" as const,
   },
 ];
 
-const carTypes = ["All", "Pickup", "Truk", "Box", "Double Cabin", "Tangki"];
+const carTypes = ["All", "Medis", "Salon", "Hiburan", "Kuliner", "Edukasi"];
 
-export default function Logistik() {
+export default function Lainnya() {
   const [selectedType, setSelectedType] = useState("All");
   const [search, setSearch] = useState("");
   const [loading] = useState(false);
@@ -127,7 +127,7 @@ export default function Logistik() {
   };
 
   // Filter berdasarkan search dan type
-  const filteredLogistik = dummyLogistik.filter((item) => {
+  const filteredLainnya = dummyLainnya.filter((item) => {
     const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) ||
                          item.lokasi.toLowerCase().includes(search.toLowerCase());
     const matchesType = selectedType === "All" || 
@@ -161,10 +161,10 @@ export default function Logistik() {
         <ScrollView style={styles.scrollArea} contentContainerStyle={styles.listContainer}>
           {loading ? (
             <ActivityIndicator size="large" color="#fff" />
-          ) : filteredLogistik.length === 0 ? (
-            <Text style={styles.messageText}>Logistik tidak tersedia di saat ini.</Text>
+          ) : filteredLainnya.length === 0 ? (
+            <Text style={styles.messageText}>Kendaraan lainnya tidak tersedia di saat ini.</Text>
           ) : (
-            filteredLogistik.map((item, index) => (
+            filteredLainnya.map((item, index) => (
               <CarCard key={`${item.code ?? item.name}-${index}`} car={item} />
             ))
           )}
