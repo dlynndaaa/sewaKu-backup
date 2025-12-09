@@ -19,7 +19,7 @@ export default function Dashboard() {
     { name: "Alat Konstruksi", icon: require("@/assets/icons/beko.png"), route: "/Kategori/AlatKonstruksi" },
     { name: "Mobil", icon: require("@/assets/icons/mobil.png"), route: "/Kategori/Mobil" },
     { name: "Bus", icon: require("@/assets/icons/bus.png"), route: "/Kategori/Bus" },
-    { name: "Motor", icon: require("@/assets/icons/motor.png") },
+    { name: "Motor", icon: require("@/assets/icons/motor.png"), route: "/Kategori/Motor" },
     { name: "Logistik", icon: require("@/assets/icons/logistik.png") },
     { name: "Lainnya", icon: require("@/assets/icons/lainnya.png") },
   ];

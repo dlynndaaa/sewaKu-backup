@@ -19,7 +19,7 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-// Mapping dummy images untuk kategori Alat Konstruksi dan Bus
+// Mapping dummy images untuk kategori Alat Konstruksi, Bus, dan Motor
 const dummyImageMap: { [key: string]: any } = {
   "excavator-cat-320": require("@/assets/images/audi.jpg"),
   "backhoe-jcb": require("@/assets/images/audi.jpg"),
@@ -33,6 +33,12 @@ const dummyImageMap: { [key: string]: any } = {
   "bus-mitsubishi-20": require("@/assets/images/audi.jpg"),
   "bus-toyota-45": require("@/assets/images/audi.jpg"),
   "bus-scania-40": require("@/assets/images/audi.jpg"),
+  "honda-cb150r": require("@/assets/images/audi.jpg"),
+  "yamaha-nmax": require("@/assets/images/audi.jpg"),
+  "kawasaki-ninja": require("@/assets/images/audi.jpg"),
+  "suzuki-gsx-r150": require("@/assets/images/audi.jpg"),
+  "honda-pcx": require("@/assets/images/audi.jpg"),
+  "yamaha-yzf-r15": require("@/assets/images/audi.jpg"),
 };
 
 const detailTabs = [
