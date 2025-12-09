@@ -460,10 +460,12 @@ const styles = StyleSheet.create({
   modalButton: {
     backgroundColor: "#34A853",
     paddingVertical: Responsive.spacing.md,
-    marginLeft: Responsive.spacing.xxxl,
     borderRadius: Responsive.borderRadius.full,
     marginTop: Responsive.spacing.md,
     width: Responsive.size(150),
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   modalButtonText: {
     color: "white",
